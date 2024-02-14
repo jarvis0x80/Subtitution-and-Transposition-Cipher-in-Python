@@ -19,9 +19,14 @@ remainder = plainTextLength % transKeyLength
 transKeySeq = []
 
 # Replace spaces in Plain Text with symbol from symbol set 1
-for c in plainText: 
-    if c == ' ':
-        plainText = plainText.replace(' ',symbols1[random.randint(0,6)])
+spaceReplacedPlainText = ""
+for char in plainText:
+    if char == " ":  # Check if the character is a space
+        spaceReplacedPlainText += random.choice(symbols1)  # Replace space with a random symbol
+    else:
+        spaceReplacedPlainText += char  # Keep the character unchanged if it's not a space
+
+plainText = spaceReplacedPlainText
     
 # Make an int Transposition Key, if the input is text then convert to int
 for j in range(transKeyLength):
